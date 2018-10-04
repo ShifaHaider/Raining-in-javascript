@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drizzling-by-javaScript</title>
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    #div {
+        /*color: red;*/
+        /*font-size: 50px;*/
+        /*left: 100px;*/
+        /*top: 100px;*/
+        /*font-family: "Brock Script";*/
+        /*position: absolute;*/
+    }
+
+    .div {
+        text-align: center;
+        height: 20px;
+        width: 90%;
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: auto;
+        margin-top: 5px;
+        /*background-color: gray;*/
+    }
+</style>
+<body>
+<div id="cloud">
+    <!--<img src="cloud-2.jpg" alt="" width="50" height="50" id="img">-->
+</div>
+<div id="div"></div>
+<script>
+
+
+    function makingDropWater() {
+//        var clouds = document.getElementById('cloud');
+//        var drop = document.createElement('div');
+//        Object.assign(drop.style, {position: 'absolute', height: '13', width: '10px', background: 'aqua'});
+//        clouds.appendChild(drop);
+    }
+
+    function runningCloud() {
+        var clouds = document.getElementById('cloud');
+        var drops = document.getElementById('div');
+        var cloud = document.createElement('img');
+        var div = document.createElement('div');
+        var drop = document.createElement('div');
+        cloud.setAttribute('src', 'cloud-2.jpg');
+        cloud.setAttribute('width', '100px');
+        cloud.style.position = 'absolute';
+        Object.assign(drop.style, {
+            backgroundColor: "gray",
+            height: "8px",
+            width: "3px",
+            borderRadius: "100%",
+            transform: "skewY(-100deg)",
+            position: 'absolute'
+        });
+        clouds.appendChild(cloud);
+        clouds.appendChild(drop);
+//        console.log(clouds);
+        var screenWidth = window.screen.width;
+        var screenHeight = window.screen.height;
+        var left = -100;
+        var top = 0;
+        var birdsFlying = setInterval(function () {
+            if (left <= screenWidth) {
+                cloud.style.left = left++ + 'px';
+//                drop.style.left = left++ + 'px';
+            }
+            else {
+                clouds.removeChild(cloud);
+                clearInterval(birdsFlying);
+            }
+            for(var i = 0; i< 5; i++){
+            drops.appendChild(drop);
+            }
+            if (top <= screenHeight) {
+//                drop.style.left = left++ + 'px';
+                drop.style.top = top++ + 'px';
+            }
+            else{
+                drops.removeChild(drops);
+                clearInterval(birdsFlying);
+            }
+        });
+    }
+    runningCloud();
+        setInterval(runningCloud, 1000);
+
+
+</script>
+</body>
+</html>
