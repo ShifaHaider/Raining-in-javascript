@@ -74,7 +74,6 @@
         var birdsFlying = setInterval(function () {
             if (left <= screenWidth) {
                 cloud.style.left = left++ + 'px';
-//                drop.style.left = left++ + 'px';
             }
             else {
                 clouds.removeChild(cloud);
@@ -84,7 +83,6 @@
             drops.appendChild(drop);
             }
             if (top <= screenHeight) {
-//                drop.style.left = left++ + 'px';
                 drop.style.top = top++ + 'px';
             }
             else{
